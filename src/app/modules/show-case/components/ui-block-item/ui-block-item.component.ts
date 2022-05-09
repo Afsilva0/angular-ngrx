@@ -1,24 +1,12 @@
-
-import { Component, Input, OnInit } from '@angular/core';
-import { ItemModel } from '@core/models/Item.interface';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-ui-block-item',
   templateUrl: './ui-block-item.component.html',
-  styleUrls: ['./ui-block-item.component.css']
+  styleUrls: ['./ui-block-item.component.css'],
 })
 export class UiBlockItemComponent implements OnInit {
+  constructor() {}
 
-
-  constructor() {
-
-
-  }
-
-  ngOnInit(): void {
-  }
-
-
+  ngOnInit(): void {}
 }
