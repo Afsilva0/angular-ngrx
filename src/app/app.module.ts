@@ -6,8 +6,8 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import * as fromFeatureItems from './store/reducers/items.reducer';
-import { FEATURE_REDUCER_TOKEN, getReducers } from './store/app.state';
+
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,19 +15,25 @@ import { FEATURE_REDUCER_TOKEN, getReducers } from './store/app.state';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+
+    /*
+     *StoreModule.forRoot se utiliza para registrar los reducers de la aplicación
+     */
     StoreModule.forRoot({}),
-    StoreModule.forFeature(fromFeatureItems.featureKey, FEATURE_REDUCER_TOKEN),
+
+    /*
+     *EffectsModule.forRoot se utiliza para registrar los effects en el store
+     */
+    EffectsModule.forRoot([]),
+
+    /*
+     *StoreDevtoolsModule.instrument se utiliza para registrar el devtool de la aplicación
+     */
     StoreDevtoolsModule.instrument({
       name: 'NgRx Store DevTools',
       maxAge: 25,
       logOnly: environment.production,
-    }), //TODO: add devtools
-  ],
-  providers: [
-    {
-      provide: FEATURE_REDUCER_TOKEN,
-      useFactory: getReducers,
-    },
+    }),
   ],
   bootstrap: [AppComponent],
 })

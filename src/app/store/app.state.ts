@@ -13,6 +13,5 @@ export const FEATURE_REDUCER_TOKEN = new InjectionToken<
 >('Feature Reducers');
 
 export function getReducers(): ActionReducerMap<AppState> {
-  // map of reducers
   return { items: fromFeatureItems.reducer };
 }
